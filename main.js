@@ -31,10 +31,18 @@ function changeVoice(event){
     // voices.find(voice => voice.name == this.value)
 } 
 
+function changeOptionValue(){
+    console.log(this.name, msg['rate'])
+    console.log(msg[this.name])
+    msg[this.name] = this.value;
+}
+
 
 
 speakButton.addEventListener('click', toggle)
 stopButton.addEventListener('click', ()=>toggle(false))
 voicesDropdown.addEventListener('change',changeVoice)
-speechSynthesis.addEventListener('voiceschanged', getvoices) // voiceschanged event reandomly stopped wprkng in firefox
-
+speechSynthesis.addEventListener('voiceschanged', getvoices) // voiceschanged event randomly stopped wprkng in firefox
+options.forEach((option)=>{
+    option.addEventListener('change',changeOptionValue)
+});
