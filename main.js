@@ -16,6 +16,7 @@ function toggle(startover = true){
 function getvoices(){
     voices = speechSynthesis.getVoices();
     voicesDropdown.innerHTML = voices
+    //    .filter((voice)=> voice.lang.includes("en"))  // filter out english voices
         .map((voice)=>{
             return `<option value ="${voice.name}">${voice.name} ${voice.lang}</option>`})
         .join(" ")
@@ -32,9 +33,8 @@ function changeVoice(event){
 } 
 
 function changeOptionValue(){
-    console.log(this.name, msg['rate'])
-    console.log(msg[this.name])
     msg[this.name] = this.value;
+    toggle();
 }
 
 
